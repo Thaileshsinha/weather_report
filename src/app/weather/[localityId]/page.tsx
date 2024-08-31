@@ -5,7 +5,6 @@ import axios from "axios";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import allData from "@/data";
-import { title } from "process";
 
 interface WeatherInterface {
   temperature?: number;
@@ -41,7 +40,9 @@ const Page: React.FC<PageProps> = ({ params }) => {
           `https://www.weatherunion.com/gw/weather/external/v0/get_locality_weather_data`,
           {
             params: { locality_id: localityId },
-            headers: { "X-Zomato-Api-Key": "ae653debb3535268c1e5fe19d3575ab2" },
+            headers: {
+              "X-Zomato-Api-Key": process.env.NEXT_PUBLIC_ZOMOTO_API_KEY,
+            },
           }
         );
 
